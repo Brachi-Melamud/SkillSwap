@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../user.model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
-import { BooleanExpression } from 'mongoose';
+//import { BooleanExpression } from 'mongoose';
 // import { setApiKey } from '@sendgrid/mail';
 import { EmailVerificationService } from '../email-verification.service';
 

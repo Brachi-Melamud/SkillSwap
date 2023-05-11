@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user.model';
-import 'firebase/auth';
-import 'firebase/database';
+//import 'firebase/auth';
+//import 'firebase/database';
 
 @Injectable({
   providedIn: 'root'
