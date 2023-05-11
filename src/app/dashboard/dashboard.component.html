@@ -1,0 +1,32 @@
+<div class="container">
+    <h2>Dashboard</h2>
+
+    <div class="profile-section">
+        <h3>Profile Overview</h3>
+        <!-- Display user's profile information -->
+        <p><strong>Skills to Teach:</strong> {{ user.skillsToTeach }}</p>
+        <p><strong>Skills to Learn:</strong> {{ user.skillsToLearn }}</p>
+        <button (click)="editProfile()">Edit Profile</button>
+    </div>
+
+    <div class="search-section">
+        <h3>Find Users</h3>
+        <input type="text" [(ngModel)]="searchQuery" placeholder="Search for users...">
+        <!-- Add filter options if needed -->
+        <button (click)="searchUsers()">Search</button>
+    </div>
+
+    <div class="recommended-section">
+        <h3>Recommended Users</h3>
+        <ul>
+            <li *ngFor="let user of recommendedUsers">{{ user.name }}</li>
+        </ul>
+    </div>
+
+    <div class="notifications-section">
+        <h3>Notifications</h3>
+        <ul>
+            <li *ngFor="let notification of notifications">{{ notification }}</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <h2>Settings</h2>
+    <div class="privacy-settings">
+        <h3>Privacy Settings</h3>
+        <!-- Add your privacy settings form controls here -->
+    </div>
+    <div class="notification-settings">
+        <h3>Notification Settings</h3>
+        <!-- Add your notification settings form controls here -->
+    </div>
+    <div class="password-change">
+        <h3>Change Password</h3>
+        <form (submit)="onChangePassword()">
+            <div class="form-group">
+                <label for="currentPassword">Current Password:</label>
+                <input type="password" id="currentPassword" name="currentPassword" [(ngModel)]="currentPassword"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword" [(ngModel)]="newPassword" required>
+            </div>
+            <button type="submit">Change Password</button>
+        </form>
+    </div>
+    <div class="account-deletion">
+        <h3>Delete Account</h3>
+        <button (click)="onDeleteAccount()">Delete Account</button>
+    </div>
+</div>

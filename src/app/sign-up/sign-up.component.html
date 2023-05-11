@@ -1,0 +1,74 @@
+<span (click)="back()" class="material-symbols-outlined">arrow_back</span>
+<form (ngSubmit)="onSubmit()" #signupForm="ngForm">
+    <div class="container" *ngIf="firstPart">
+        <h2>Create a new account</h2>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required [(ngModel)]="user.name"
+                (ngModelChange)="formIsSubmitted = false">
+            <div class="error" *ngIf="formIsSubmitted && signupForm.controls['name'].invalid">Please enter your
+                name</div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required [(ngModel)]="user.email"
+                (ngModelChange)="formIsSubmitted = false">
+            <div class="error" *ngIf="formIsSubmitted && (signupForm.controls['email'].invalid || !this.isValidEmail)">
+                Please enter a valid
+                email address</div>
+        </div>
+        <div class="form-group">
+            <div class="shareLine">
+                <label for="password">Password: (At least 6 characters)</label>
+                <span *ngIf="showValidPasswordSign" class="material-symbols-outlined">recommend</span>
+            </div>
+            <input (keyup)="passwordCorrect($event)" type="password" id="password" name="password" required
+                [(ngModel)]="user.password" (ngModelChange)="formIsSubmitted = false">
+            <div class="error" *ngIf="formIsSubmitted && signupForm.controls['password'].invalid">Please enter a
+                valid password</div>
+        </div>
+        <div class="form-group">
+            <label for="checkPassword">Check password:</label>
+            <input type="password" id="checkPassword" name="checkPassword" required [(ngModel)]="user.checkPassword"
+                (ngModelChange)="formIsSubmitted = false">
+            <div class="error" *ngIf="formIsSubmitted && user.password != user.checkPassword">The password does not
+                match</div>
+        </div>
+        <button type="button" (click)="toSecondPart()">Sign Up</button>
+        <div class="social-login">
+            <p>Or sign up with:</p>
+            <button (click)="onGoogleSignIn()">Google</button>
+            <button (click)="onFacebookSignIn()">Facebook</button>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="secondPart">
+        <h2>Tell us about yourself</h2>
+        <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" id="country" name="country" required [(ngModel)]="user.country">
+            <div class="error" *ngIf="secondPartIsSubmitted && signupForm.controls['country'].invalid">
+                Please enter a country</div>
+        </div>
+        <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required [(ngModel)]="user.city">
+            <div class="error" *ngIf="secondPartIsSubmitted && signupForm.controls['city'].invalid">
+                Please enter a city</div>
+        </div>
+        <div class="form-group">
+            <label for="occupation">Occupation:</label>
+            <input type="text" id="occupation" name="occupation" required [(ngModel)]="user.occupation">
+            <div class="error" *ngIf="secondPartIsSubmitted && signupForm.controls['occupation'].invalid">
+                Please enter a occupation</div>
+        </div>
+        <div class="form-group">
+            <label for="age">How old are you?</label>
+            <input type="text" id="age" name="age" required [(ngModel)]="user.age">
+            <div class="error" *ngIf="secondPartIsSubmitted && signupForm.controls['age'].invalid">
+                Please enter your age</div>
+        </div>
+        <button type="submit">OK</button>
+    </div>
+
+</form>

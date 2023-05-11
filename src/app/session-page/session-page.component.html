@@ -1,0 +1,33 @@
+<div class="container">
+    <h2>Session Page</h2>
+    <div class="session-details">
+        <h3>Session Details</h3>
+        <p>Date: {{ session.date }}</p>
+        <p>Time: {{ session.time }}</p>
+        <p>Location: {{ session.location }}</p>
+    </div>
+    <div class="session-materials">
+        <h3>Materials and Resources</h3>
+        <ul>
+            <li *ngFor="let material of session.materials">{{ material }}</li>
+        </ul>
+    </div>
+    <div class="session-notes">
+        <h3>Notes</h3>
+        <p>{{ session.notes }}</p>
+    </div>
+    <div class="review-section">
+        <h3>Leave a Review</h3>
+        <form (submit)="onSubmitReview()">
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <input type="number" id="rating" name="rating" [(ngModel)]="rating" min="1" max="5" required>
+            </div>
+            <div class="form-group">
+                <label for="review">Review:</label>
+                <textarea id="review" name="review" [(ngModel)]="review" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>User Profile - {{ user.name }}</h2>
+    <div class="user-bio">
+        <h3>Bio:</h3>
+        <p>{{ user.bio }}</p>
+    </div>
+    <div class="skills-section">
+        <h3>Skills:</h3>
+        <div class="skills-list">
+            <div class="skills">
+                <span class="label">Skills to Teach:</span>
+                <ul>
+                    <li *ngFor="let skill of user.skillsToTeach">{{ skill }}</li>
+                </ul>
+            </div>
+            <div class="skills">
+                <span class="label">Skills to Learn:</span>
+                <ul>
+                    <li *ngFor="let skill of user.skillsToLearn">{{ skill }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="actions-section">
+        <button *ngIf="!isFollowing" (click)="onFollow()">Follow</button>
+        <button *ngIf="isFollowing" (click)="onUnfollow()">Unfollow</button>
+        <button (click)="onRequestSession()">Request Session</button>
+    </div>
+    <div class="reviews-section">
+        <h3>Reviews:</h3>
+        <ul *ngIf="user.reviews.length > 0">
+            <li *ngFor="let review of user.reviews">
+                <div class="review-header">
+                    <span class="reviewer-name">{{ review.reviewerName }}</span>
+                    <span class="rating">{{ review.rating }}/5</span>
+                </div>
+                <p>{{ review.comment }}</p>
+            </li>
+        </ul>
+        <p *ngIf="user.reviews.length === 0">No reviews yet.</p>
+    </div>
+</div>
