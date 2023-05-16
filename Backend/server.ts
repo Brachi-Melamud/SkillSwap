@@ -1,15 +1,16 @@
 import express from "express";
 import cors from "cors";
-import config from "./Backend/utils/config.ts";
-import catchAll from "./middleware/catch-all";
-import routeNotFound from "./middleware/route-not-found";
-import vacationController from "./routes/vacationController";
-import userController from "./routes/userController";
+import config from "./utils/config";
+import catchAll from "./middleware/catch_all.js";
+import routeNotFound from "./middleware/route_not_found.js";
+// import vacationController from "./routes/vacationController";
+import userController from "./route/userController.js";
+
 
 const server = express();
 server.use(cors());
 server.use(express.json());
-server.use("/", vacationController);
+// server.use("/", vacationController);
 server.use("/", userController);
 server.use("*", routeNotFound);
 server.use(catchAll);

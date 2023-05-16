@@ -4,6 +4,11 @@ import User from "../model/user";
 
 const router = express.Router();
 
+const users = [
+  { id: 1, email: 'john@example.com', password: 'password123' },
+  { id: 2, email: 'jane@example.com', password: 'password456' },
+];
+
 // GET
 // All Vacations
 router.get(
@@ -23,7 +28,7 @@ router.get(
   "/api/user/:userId",
   async (request: Request, response: Response, next: NextFunction) => {
     try {
-      const userId = +request.params.userId;
+      const userId = +request.params['userId'];
       const user = await logic.getOneUser(userId);
       response.json(user);
     } catch (err: any) {
@@ -45,5 +50,36 @@ router.post(
     }
   }
 );
+
+router.post('/api/login', (req, res) => {
+  const { email, password } = req.body;
+
+  // Find user with matching email
+  const user = users.find((user) => user.email === email);
+
+  if (!user) {
+    return res.status(404).json({ message: 'User not found' });
+  }
+
+  // Check password
+  if (user.password !== password) {
+    return res.status(401).json({ message: 'Invalid password' });
+  }
+
+  // Authentication successful
+  res.json({ message: 'Login successful', user: { id: user.id, email: user.email } });
+});
+
+// Update profile endpoint
+router.put('/api/profile', (req, res) => {
+  // Handle profile update logic here
+  // Extract necessary data from the request body
+  const { name, email } = req.body;
+
+  // Perform validation, database operations, etc.
+
+  // Return a response
+  res.json({ message: 'Profile updated successfully' });
+});
 
 export default router;

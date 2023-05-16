@@ -1,4 +1,4 @@
-import mysql from "mysql";
+import * as mysql from "mysql";
 import config from "./config";
 
 //creating a connection object
@@ -8,6 +8,8 @@ const connection = mysql.createPool({
   password: config.mysqlPassword,
   database: config.mysqlDatabase,
 });
+
+module.exports = connection;
 
 console.log("we are connected to mysql server");
 
