@@ -1,4 +1,4 @@
-import * as mysql from "mysql";
+import mysql from "mysql";
 import config from "./config";
 
 //creating a connection object
@@ -12,6 +12,18 @@ const connection = mysql.createPool({
 module.exports = connection;
 
 console.log("we are connected to mysql server");
+
+function getConnection() {
+  return new Promise((resolve, reject) => {
+    connection.getConnection((error: any, Connection: any) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(Connection);
+      }
+    });
+  });
+};
 
 function execute(sql: string): Promise<any> {
   return new Promise<any>((resolve, reject) => {
@@ -30,4 +42,4 @@ function execute(sql: string): Promise<any> {
   });
 }
 
-export default { execute };
+export default { execute, getConnection };
