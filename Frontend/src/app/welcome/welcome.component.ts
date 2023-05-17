@@ -15,5 +15,7 @@ export class WelcomeComponent {
   onLoginClicked() {
     this.router.navigate(['/login']);
   }
-
+  TeacherReg(){
+    this.router.navigate(['/teacherSignUp']);
+  }
 }

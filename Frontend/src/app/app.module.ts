@@ -15,6 +15,7 @@ import { SessionManagementComponent } from './session-management/session-managem
 import { SessionPageComponent } from './session-page/session-page.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 import { UserComponent } from './user/user.component';
+import { TeacherSignUpComponent } from './teacher-sign-up/teacher-sign-up.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { UserComponent } from './user/user.component';
     SessionPageComponent,
     SettingsPageComponent,
     UserComponent,
+    TeacherSignUpComponent,
   ],
   imports: [
     BrowserModule,

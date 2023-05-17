@@ -1,4 +1,6 @@
-const { pool } = require('Backend/utils/dal_mysql');
+
+
+import  pool  from "../utils/dal_mysql";
 
 const createUsersTable = async () => {
   try {

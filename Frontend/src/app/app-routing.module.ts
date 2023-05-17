@@ -9,12 +9,15 @@ import { ScheduleSessionComponent } from './schedule-session/schedule-session.co
 import { SessionManagementComponent } from './session-management/session-management.component';
 import { SessionPageComponent } from './session-page/session-page.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
+import { TeacherSignUpComponent } from './teacher-sign-up/teacher-sign-up.component';
 
 const routes: Routes = [
   { path: '', component: WelcomeComponent },
   { path: 'signup', component: SignUpComponent },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'teacherSignUp', component: TeacherSignUpComponent },
+
 ];
 
 @NgModule({

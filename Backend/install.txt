@@ -23,6 +23,10 @@ npm i @types/joi
 npm i @types/mysql
 npm i @types/node
 
+create migration:
+node /Users/brachi/Desktop/skill/full stack/SkillSwap/Backend/migrations/create_users_table.ts
+
+
 
 check server is running by the command line:
 npm run server
